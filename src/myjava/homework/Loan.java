@@ -21,7 +21,9 @@ public class Loan extends Transaction{
 
         if(money <= limit){
             money = money + theBankDatabase.getDeb(this.getAccountNumber());
+            int total = theBankDatabase.getTotalBalance(this.getAccountNumber())+money;
             theBankDatabase.setDebt(this.getAccountNumber(),money);
+            theBankDatabase.setTotalBalance(this.getAccountNumber(),total);
             screen.displayMessageLine("Transaction Success");
         }
         else{
